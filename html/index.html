@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    //三种状态
+    // let p1 = new Promise(function (res, rej) {
+    //     res(123)
+    // })
+    // let p2 = new Promise(function (res, rej) {
+    //     rej(456)
+    // })
+    // let p3 = new Promise(function (res, rej) {
+    //     setTimeout(rej, 1000, "xs")
+    // })
+    // console.log(p1);
+    // console.log(p2);
+    // console.log(p3);
+
+    // // 与参数的字母无关  跟位置有关
+    // let p1 = new Promise(function (res, rej) {
+    //     res(123)
+    // })
+    // let p2 = new Promise(function (rej, res) {
+    //     rej(456)
+    // })
+    // // console.log(p1);
+    // // console.log(p2);
+    // p1.then(v => { console.log(v); return "牛" })
+    //     .then(v => { console.log(v); })
+    // p2.then(v => { console.log(v); })
+    //     .then(v => { console.log(v); })
+
+
+    // // 与参数的字母无关  跟位置有关
+    // let p1 = new Promise(function (res, rej) {
+    //     res(123)
+    // })
+    // let p2 = new Promise(function (res, rej) {
+    //     rej(456)
+    // })
+    // console.log(p1);
+    // console.log(p2);
+    // p1.then(v => { console.log(v); })
+    //     .catch(v => { console.log(v); })
+    // p2.then(v => { console.log(v); })
+    //     .catch(v => { console.log(v); })
+
+    // 四种情况
+    //    1. 成功 成功
+    // let p1 = new Promise(function (res, rej) {
+    //     res(123)
+    // })
+    // let p2 = new Promise(function (res, rej) {
+    //     res(p1)
+    // })
+    // p2.then(v => { console.log(v); })
+    //    2. 失败 失败
+    // let p1 = new Promise(function (res, rej) {
+    //     rej(123)
+    // })
+    // let p2 = new Promise(function (res, rej) {
+    //     res(p1)
+    // })
+    // console.log(p1);
+    // console.log(p2);
+    // p2.then(v => { console.log(v); })
+    //    3. 成功 失败
+    // let p1 = new Promise(function (res, rej) {
+    //     res(123)
+    // })
+    // let p2 = new Promise(function (res, rej) {
+    //     rej(p1)
+    // })
+    // console.log(p1);
+    // console.log(p2);
+    // p2.then(v => { console.log(v); })
+    //    4. 失败 成功
+    // let p1 = new Promise(function (res, rej) {
+    //     rej(123)
+    // })
+    // let p2 = new Promise(function (res, rej) {
+    //     res(p1)
+    // })
+    // console.log(p1);
+    // console.log(p2);
+    // p2.then(v => { console.log(v); })
+
+    // finally
+    // 成功 失败
+    // let p1 = new Promise(function (res, rej) {
+    //     res(123)
+    // })
+    // let p2 = new Promise(function (res, rej) {
+    //     rej(456)
+    // })
+    // console.log(p1);
+    // console.log(p2);
+    // p1.finally(v => { console.log("组合1"); })
+    //     .then(v => { console.log(v); })
+
+    // p2.finally(v => { console.log("组合2"); })
+    //     .then(v => { console.log(v); })
+
+
+
+    // 第七天\
+    // 实列
+    // let p1 = new Promise(function (res, rej) {
+    //     res(1)
+    // })
+    // let p2 = new Promise(function (res, rej) {
+    //     res(2)
+    // })
+    // let p3 = new Promise(function (res, rej) {
+    //     res(3)
+    // })
+    // let a = Promise.all([p1, p2, p3]);
+    // console.log(a);
+
+    // 实列
+    // let p1 = new Promise(function (res, rej) {
+    //     res(1)
+    // })
+    // let p2 = new Promise(function (res, rej) {
+    //     res(2)
+    // })
+    // let p3 = new Promise(function (res, rej) {
+    //     res(3)
+    // })
+    // // 不是Promise 实列
+    // let p4 = 12
+    // let p5 = false
+    // let p6 = "明天会更好，今天且珍且惜。"
+    // let a = Promise.all([p1, p2, p3, p4, p5, p6]);
+    // console.log(a);
+
+    //  全部成功状态
+    // let p1 = new Promise(function (res, rej) {
+    //     res(1)
+    // })
+    // // p2为失败状态
+    // let p2 = new Promise(function (res, rej) {
+    //     rej(2)
+    // })
+    // let p3 = new Promise(function (res, rej) {
+    //     res(3)
+    // })
+
+    // let a = Promise.all([p1, p2, p3]);
+    // console.log(a);
+
+
+    // Promise.race()
+    // let p1 = new Promise(function (res, rej) {
+    //     // 异步
+    //     setTimeout(function () {
+    //         res(1)
+    //     })
+    // })
+    // let p2 = new Promise(function (res, rej) {
+    //     res(2)
+    // })
+    // let p3 = new Promise(function (res, rej) {
+    //     res(3)
+    // })
+
+    // let a = Promise.race([p1, p2, p3]);
+    // console.log(a);
+
+    // async
+    // 没调用
+    // let p1 = async function () {
+
+    // }
+    // console.log(p1);
+    // 调用
+    // let p1 = async function () {
+    // }
+    // console.log(p1());
+
+    // async function a() {
+    //     setTimeout(() => {
+    //         console.log(999);
+    //     })
+    //     for (let i = 0; i < 3; i++) {
+    //         console.log(i);
+    //         await new Promise(res => {
+    //             setTimeout(() => {
+    //                 console.log(666);
+    //             }, 0)
+    //             // res在实列外
+    //             res()
+
+    //         })
+    //     }
+    // }
+    // a()
+
+    // async function a() {
+    //     setTimeout(() => {
+    //         console.log(999);
+    //     })
+    //     for (let i = 0; i < 3; i++) {
+    //         console.log(i);
+    //         await new Promise(res => {
+    //             setTimeout(() => {
+    //                 console.log(666);
+    //             }, 0)
+    //             // 没有res状态
+    //         })
+    //     }
+    // }
+    // a()
+    // let p1 = new Promise(function (res, rej) { })
+    // console.log(p1);
+
+
+
+    // function sleep() {
+    //     return new Promise(resolve => {
+    //         setTimeout(function () {
+    //             console.log("+");
+    //             resolve()
+    //         }, 1000);
+    //     })
+    // }
+    // sleep()
+    // async function p1() {
+    //     for (let i = 1; i <= 5; i++) {
+    //         console.log(i);
+    //         await sleep();
+    //         console.log("x");
+    //     }
+    // }
+    // console.log(p1());
+
+    async function p1() {
+        console.log(1);
+        await console.log(2);
+        console.log(3);
+    }
+    console.log(p1());
+</script>
+
+</html>

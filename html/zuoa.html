@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,th,tr,td{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        tr,th,td{
+            text-align: center;
+            margin: -1px 0 0 -1px;
+        }
+        th,td{
+            width: 100px;
+        }
+        button{
+            width: 100px;
+            height: 30px;
+            border-radius: 10px;
+            border: none;
+            background: #ffa500;
+            color: white;
+            margin-left: 140px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <th>姓名</th>
+            <th>年龄</li>
+            <th>性别</li>
+            <th>电话</li>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <button>添加</button>
+</body>
+</html>
+<script>
+    console.log(window.cookie);
+    let zhongarr = [];
+    function print() {
+        var strcookie = sessionStorage.getItem('username');
+        if(strcookie != null){
+            var arrcookie = strcookie.split(":");
+            arrcookie.pop();
+            console.log(arrcookie);
+            arrcookie.forEach((i)=>{
+                let obj = {};
+                let arrxiao = i.split(",");
+                console.log(arrxiao);
+                arrxiao.forEach((j)=>{
+                    let arr = j.split('=');
+                    obj[arr[0]] = arr[1];
+                })
+                console.log(obj);
+                zhongarr.push(obj);
+            })
+        }
+    }
+    print()
+    let tbody = document.querySelector('tbody');
+    zhongarr.forEach((i)=>{
+        let tr = document.createElement('tr');
+        tr.innerHTML = `
+        <td>${i.username}</td>
+        <td>${i.age}</td>
+        <td>${i.sex}</td>
+        <td>${i.phone}</td>`
+        tbody.appendChild(tr);
+    })
+    document.querySelector('button').onclick = function(){
+    window.location = 'zuob.html';
+    }        
+</script>

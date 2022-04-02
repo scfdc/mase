@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li{list-style: none;}
+        button{
+            height: 30px;
+            border-radius: 10px;
+            border: none;
+            background: #ffa500;
+            color: white;
+            padding: 0 50px;
+            margin-left: 100px;
+        }
+        .xuan{
+            display: none;
+            background: #F6F7F8;
+            padding: 20px 40px;
+            width: 300px;
+            height: 200px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+        }
+        .xuan>p{
+            text-align: center;
+            font-size: 30px;
+
+        }
+        .xuan>div{
+            width: 200px;
+            height: 50px;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <ul>
+            <li>姓名：<input type="text" name="name"></li>
+            <li>年龄：<input type="text" name="age"></li>
+            <li>性别：<input type="text" name="sex"></li>
+            <li>电话：<input type="text" name="phone"></li>
+        </ul>
+        <button>提交</button>
+    </div>
+    <div class="xuan">
+        <p>是否添加数据</p>
+        <div>
+            <button>是</button>
+            <button>否</button>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    document.querySelector('.content>button').onclick = function(){
+        document.querySelector('.xuan').style.display = 'block';
+        document.querySelector('.xuan>div>button:first-child').onclick = function(){
+            let username = document.getElementsByName('name')[0].value;
+            let age = document.getElementsByName('age')[0].value;
+            let sex = document.getElementsByName('sex')[0].value;
+            let phone = document.getElementsByName('phone')[0].value;
+            let str = sessionStorage.getItem('username');
+            console.log(str);
+            if(str == null){
+                sessionStorage.setItem('username',`username=${username},age=${age},sex=${sex},phone=${phone}:`);
+                console.log(1);
+            }else{
+                sessionStorage.setItem('username',`${str}username=${username},age=${age},sex=${sex},phone=${phone}:`)
+                console.log(2);
+            }
+            window.location = 'zuoa.html';
+            document.querySelector('.xuan').style.display = 'none';
+        }
+        document.querySelector('.xuan>div>button:last-child').onclick = function(){
+            document.querySelector('.xuan').style.display = 'none';
+            document.getElementsByName('name')[0].value='';
+            document.getElementsByName('age')[0].value='';
+            document.getElementsByName('sex')[0].value='';
+            document.getElementsByName('phone')[0].value='';
+        }
+    }
+</script>
